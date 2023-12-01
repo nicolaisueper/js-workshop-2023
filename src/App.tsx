@@ -41,6 +41,10 @@ function App() {
     fetchData(uri);
   }, []);
 
+  useEffect(() => {
+    console.log(count);
+  }, []);
+
   return (
     <>
       <div>

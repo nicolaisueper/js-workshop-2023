@@ -40,6 +40,7 @@
     "vitest-fetch-mock": "0.2.2"
   },
   "lint-staged": {
-    "src/*.{ts,tsx,js,jsx,json}": "prettier --write"
+    "src/*.{ts,tsx,js,jsx,json}": "prettier --write",
+    "src/*.{ts,tsx,js,jsx}": "eslint --fix"
   }
 }
