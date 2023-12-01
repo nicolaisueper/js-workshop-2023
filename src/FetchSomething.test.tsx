@@ -1,5 +1,5 @@
-import {describe, it} from "vitest";
-import {render} from "@testing-library/react";
+import {describe, expect, it} from "vitest";
+import {render, waitFor, screen} from "@testing-library/react";
 import {FetchSomething} from "./FetchSomething.tsx";
 import {SouthParkAPIResponse} from "./types.ts";
 import nock from "nock";
@@ -7,7 +7,7 @@ import nock from "nock";
 const mockReply: SouthParkAPIResponse = {
     data: [{
         "id": 1,
-        "name": "Gerald Broflovski",
+        "name": "Hurzel",
         "age": null,
         "sex": "Male",
         "hair_color": "Brown",
@@ -30,15 +30,14 @@ const mockReply: SouthParkAPIResponse = {
 } as never as SouthParkAPIResponse;
 
 describe('<FetchSomething />', () => {
-    it('should render without crashing', () => {
+    it('should render without crashing', async () => {
         nock("https://spapi.dev")
-            .defaultReplyHeaders({
-                "access-control-allow-origin": "*",
-            })
             .get("/api/characters")
             .reply(200, mockReply);
 
-        const {queryByText} = render(<FetchSomething />);
-        expect(queryByText("Gerald Broflovski"))
+        const {findByText} = render(<FetchSomething />);
+        const element  = await waitFor(() => findByText(/Gerald/));
+        screen.debug(element);
+        expect(element).toBeInTheDocument();
     });
 });

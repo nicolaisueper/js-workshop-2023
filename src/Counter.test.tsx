@@ -1,12 +1,12 @@
 import {describe, it, expect, vi} from "vitest";
 import {render, fireEvent, act} from '@testing-library/react'
 import {Counter} from "./Counter.tsx";
-import '@testing-library/jest-dom/vitest';
 
 describe('<Counter/>', () => {
     it("renders without crashing", () => {
         render(<Counter count={0} increment={() => {}}/>)
     })
+
     it('should not show additional text if count is less than 5', () => {
         const {queryByText} = render(<Counter count={0} increment={() => {}}/>)
 
