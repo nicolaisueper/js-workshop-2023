@@ -1,0 +1,9 @@
+.ws-button {
+    font-family: "Roboto", system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    padding: 0.75rem 1.75rem;
+    background-color: #FF6262;
+    color: #000000;
+    border: 1px solid #BE0000;
+    border-radius: 8px;
+}

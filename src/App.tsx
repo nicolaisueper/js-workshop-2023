@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import { Counter } from "./Counter.tsx";
 import { SouthParkAPIResponse } from "./types.ts";
+import { Button } from "./Button.tsx";
 
 const uri = `https://spapi.dev/api/characters`;
 
@@ -41,10 +42,6 @@ function App() {
     fetchData(uri);
   }, []);
 
-  useEffect(() => {
-    console.log(count);
-  }, []);
-
   return (
     <>
       <div>
@@ -56,6 +53,10 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      <Button>
+        <div></div>
+        <h1></h1>
+      </Button>
       <Counter count={count} increment={() => setCount(count + 1)} />
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
